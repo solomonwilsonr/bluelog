@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 400px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto; /* Center align the button */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body style="margin-top: 100px;">
+
+    <form id="storeRegistrationForm">
+        <label for="storeName">Store Name:</label>
+        <input type="text" id="storeName" name="storeName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="contactPerson">Contact Person:</label>
+        <input type="text" id="contactPerson" name="contactPerson" required>
+
+        <label for="gstNumber">GST Number:</label>
+        <input type="text" id="gstNumber" name="gstNumber" required>
+
+        <label for="panNumber">PAN Number:</label>
+        <input type="text" id="panNumber" name="panNumber" required>
+
+        <label for="address">Address (max 150 words):</label>
+        <textarea id="address" name="address" rows="4" required maxlength="150"></textarea>
+
+        <label for="countryCode">Country Code:</label>
+        <input type="tel" id="countryCode" name="countryCode" required placeholder="e.g., +1">
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" required>
+
+        <button type="button" onclick="submitForm()">Register</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            // You can add your form submission logic here
+            alert("Form submitted!");
+        }
+    </script>
+
+</body>
+</html>

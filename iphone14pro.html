@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .product-container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .product-details {
+      margin-top: 20px;
+    }
+
+    .product-title {
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 1.5em;
+      color: #4CAF50;
+    }
+
+    .product-description {
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .additional-info {
+      margin-top: 20px;
+    }
+
+    .info-heading {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-list-item {
+      margin-bottom: 5px;
+    }
+
+    .quantity-section {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity-label {
+      font-size: 1.2em;
+      margin-right: 10px;
+    }
+
+    .quantity-input {
+      width: 60px;
+      padding: 8px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    .quantity-btn {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .quantity-btn:hover {
+      background-color: #45a049;
+    }
+
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .add-to-cart,
+    .buy-now {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
+    .add-to-cart {
+      background-color: #4CAF50;
+      color: #fff;
+    }
+
+    .buy-now {
+      background-color: #2196F3;
+      color: #fff;
+    }
+  </style>
+  <title>iPhone 14 Pro</title>
+</head>
+<body>
+  <div class="product-container">
+    <img class="product-image" src="th (14).jpg" alt="iPhone 14 Pro">
+    <div class="product-details">
+      <h2 class="product-title">iPhone 14 Pro</h2>
+      <p class="product-price">&#8377; 89,999</p>
+      <p class="product-description">
+        The iPhone 14 Pro is the latest flagship from Apple, featuring a stunning design, powerful A16 Bionic chip, and an advanced camera system.
+      </p>
+      <div class="additional-info">
+        <h3 class="info-heading">Additional Information:</h3>
+        <ul class="info-list">
+          <li class="info-list-item">Screen Size: 6.7 inches</li>
+          <li class="info-list-item">Storage: 256GB</li>
+          <li class="info-list-item">Camera: Triple Rear Camera (12MP + 12MP + 12MP)</li>
+          <li class="info-list-item">Front Camera: 12MP</li>
+          <li class="info-list-item">Battery: 3500mAh</li>
+          <li class="info-list-item">Operating System: iOS 15</li>
+        </ul>
+      </div>
+    </div>
+    <div class="quantity-section">
+      <label class="quantity-label" for="quantity">Quantity:</label>
+      <button class="quantity-btn" onclick="decrementQuantity()">-</button>
+      <input class="quantity-input" type="number" id="quantity" name="quantity" value="1" min="1">
+      <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+    </div>
+    <div class="action-buttons">
+      <a href="order.html"><button class="add-to-cart">Add to Cart</button></a>
+      <a href="order.html"><button class="buy-now">Buy Now</button></a>
+    </div>
+  </div>
+
+  <script>
+    function incrementQuantity() {
+      const quantityInput = document.getElementById("quantity");
+      quantityInput.value = parseInt(quantityInput.value, 10) + 1;
+    }
+
+    function decrementQuantity() {
+      const quantityInput = document.getElementById("quantity");
+      const currentValue = parseInt(quantityInput.value, 10);
+      if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+      }
+    }
+  </script>
+</body>
+</html>

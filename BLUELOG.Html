@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neebys</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
+<style>
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 0px;
+background-color: #f4f4f4;
+}
+
+
+
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: rgba(111, 111, 183, 0.879);
+color: white;
+padding: 10px 20px;
+}
+
+.brand {
+font-size: 24px;
+font-weight: bold;
+}
+
+.user-icon {
+font-size: 24px;
+}
+
+.search-container {
+max-width: 400px;
+margin: 10px 0;
+background-color: #ffffff;
+border: 1px solid #ddd;
+border-radius: 4px;
+overflow: hidden;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+width: 100%;
+padding: 14px; /* Increased padding for better touch interaction */
+font-size: 16px;
+border: none;
+border-radius: 0;
+}
+
+@media screen and (max-width: 992px) {
+.header {
+flex-direction: column;
+align-items: center;
+}
+
+.user-icon {
+margin-left: auto; /* Move the user icon to the right end */
+margin-top: 10px; /* Add some space between brand and user icon */
+}
+
+.search-container {
+width: 80%; /* Reduced width for tablets */
+max-width: none;
+}
+
+.search-input {
+padding: 10px; /* Adjusted padding for tablets */
+}
+}
+
+@media screen and (max-width: 600px) {
+.user-icon {
+display: none;
+}
+}
+
+.category-column {
+display: flex;
+flex-direction: row;
+overflow-x: auto;
+}
+
+.category {
+padding: 10px;
+margin-right: 10px;
+background-color: #FFF5E0;
+border: 1px solid #ddd;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.category:hover {
+background-color: #e6e6e6;
+}
+
+
+
+
+
+
+        /* this is for statement div*/
+         .royal-grey-div {
+            background-color: #484848; /* Royal Grey color */
+            height: 100px;
+            width: 80%;
+            margin: 0 auto; /* Center the div */
+            border-radius: 10px; /* Adds a slight curve to the edges */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Text color */
+        }
+
+        .royal-text {
+            font-weight: bold;
+            font-size: 1.5em; /* Adjust the font size as needed */
+            text-align: center;
+            max-width: 90%; /* Ensures text responsiveness */
+        }
+
+         /* Product list container */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 20px;
+        }
+
+        /* Product card */
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Product image */
+        .product-image {
+            width: 100%;
+            max-height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Product title */
+        .product-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Product price */
+        .product-price {
+            color: #4CAF50;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Product description */
+        .product-description {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Hover styles */
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media screen and (min-width: 768px) {
+            /* Adjust for screens larger than or equal to 768px width (laptop and tablet) */
+            .product-list {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .product-image {
+                max-height: 200px;
+            }
+        }
+
+         /* Thin div container */
+        .thin-div {
+            background-color: #333; /* Royal grey color */
+            width: 80%;
+            height: 80px;
+            margin: auto; /* Center the div horizontally */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Text color */
+            font-size: 18px;
+            font-weight: bold;
+        }
+       
+        /*this is see all blue*/
+        .custom-div {
+      height: 20px;
+      width: 100%;
+      background-color:  #f4f4f4; /* Set background color to white */
+      color: blue; /* Set text color to blue */
+      text-align: right;
+      line-height: 20px; /* Center the text vertically within the div */
+      font-size: 14px; /* Adjust the font size as needed */
+      overflow: hidden; /* Hide any overflow content */
+    }
+
+
+    /*this is product slider*/
+    .slider-container {
+      overflow: hidden;
+      width: 80%;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .slider-track {
+      display: flex;
+      animation: scroll 60s linear infinite; /* Adjust the speed here */
+    }
+
+    .product {
+      flex: 0 0 auto;
+      width: 50%; /* Two products in smaller screens */
+      box-sizing: border-box;
+      margin-right: 10px;
+      position: relative;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      max-width: 300px;
+      max-height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .product-details {
+      padding: 20px;
+    }
+
+    .product-name {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.1em;
+      color: #4CAF50;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .product img {
+        max-width: 200px;
+        max-height: 200px;
+      }
+    }
+
+    /*this is stores near me*/
+    .circle-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #4CAF50;
+      margin: 20px; /* Adjust the margin for spacing */
+    }
+        
+/* this is order bar*/
+.fixed-rectangle {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background-color: #3498db; /* Set your desired background color */
+color: #fff; /* Set your desired text color */
+padding: 10px;
+box-sizing: border-box;
+text-align: center;
+padding: 10px;
+}
+
+/* footer*/
+footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      margin: 10px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .footer-section li {
+      margin-bottom: 5px;
+    }
+ /*this is for ad banner*/
+    .ad-banner {
+         width: 80%;
+         height: 300px;
+         margin: 0 auto;
+         background-color: #0099cc;
+         color: blue;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      @media (max-width: 768px) {
+         .ad-banner {
+            height: 200px;
+         }
+      }
+
+</style>
+</head>
+<body>
+</style>
+</head>
+
+<div class="header">
+<div class="brand">Neebys</div>
+<div class="search-container">
+<input type="text" class="search-input" placeholder="Search Here...">
+</div>
+<a href="test.html"><div class="user-icon">👤</div></a>
+</div>
+
+<!-- Rest of your website content goes here -->
+
+
+</style>
+</head>
+<body>
+
+<div class="category-column">
+<a style="text-decoration: none;" href="electronics.html"><div class="category">Electronics</div></a>
+<a style="text-decoration: none;" href="clothes.html"><div class="category">Clothes</div></a>
+<a style="text-decoration: none;" href="musicalinstr.html"><div class="category">Musical instruments</div></a>
+<div class="category">Kids item</div>
+<div class="category">Hardware</div>
+<div class="category">Software</div>
+<div class="category">Gift items</div>
+<div class="category">Footwear</div>
+<!-- Add more categories as needed -->
+</div>
+<br>
+<div class="ad-banner" style="font-size: larger;">TESTING WEBSITE</div>
+<br>
+
+<!--statement div-->
+ <div class="royal-grey-div">
+        <p class="royal-text">NOTHING IS OUT OF STOCK HERE</p>
+    </div>
+    <br><br>
+    <hr>
+    <br>
+    <hr>
+    <div class="product-list">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="css/th (15).jpg" alt="Product 1" class="product-image">
+            <div class="product-title">BOAT ROCKERZ HEADPHONE</div>
+            <div class="product-price">Rs."1499"</div>
+           
+        </div>
+
+        <!-- Product 2 -->
+            <div class="product-card">
+            <a href="css/iphone14pro"><img src="th (14).jpg" alt="Product 2" class="product-image"></a>
+            <a href="iphone14pro.html"><div class="product-title">IPHONE 14 PRO</div></a>
+            <div class="product-price">Rs.79000</div>
+            
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="css/th (16).jpg" alt="Product 3" class="product-image">
+            <div class="product-title">MACBOOK AIR</div>
+            <div class="product-price">Rs.98000</div>
+            
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="css/th (17).jpg" alt="Product 4" class="product-image">
+            <div class="product-title">Apple Watch</div>
+            <div class="product-price">Rs. 28000</div>
+            
+        </div>
+     
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="css/th.jpg" alt="Product-4" class="product-image">
+            <div class="product-title">Samsung Fold</div>
+            <div class="product-price">Rs. 145000</div>
+            
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="css/th (1).jpg" alt="Product 4" class="product-image">
+            <div class="product-title">GOLF KIT</div>
+            <div class="product-price">Rs.5000</div>
+            
+        </div>
+        <!-- Add more products as needed -->
+       
+    </div>
+
+    <br>
+    <a style="text-decoration: none;" href="electronics.html"><div class="custom-div">See All</div></a>
+    <br>
+
+    <!--this is product sliders-->
+    <div class="slider-container">
+      <div class="slider-track" id="slider-track">
+        <!-- Repeat products for continuous loop -->
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200" alt="Product 1">
+          <div class="product-details">
+            <h3 class="product-name">Product 1</h3>
+            <span class="price">&#8377; 1000</span>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200" alt="Product 2">
+          <div class="product-details">
+            <h3 class="product-name">Product 2</h3>
+            <span class="price">&#8377; 1500</span>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200" alt="Product 3">
+          <div class="product-details">
+            <h3 class="product-name">Product 3</h3>
+            <span class="price">&#8377; 1200</span>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200" alt="Product 4">
+          <div class="product-details">
+            <h3 class="product-name">Product 4</h3>
+            <span class="price">&#8377; 1800</span>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200" alt="Product 5">
+          <div class="product-details">
+            <h3 class="product-name">Product 5</h3>
+            <span class="price">&#8377; 2000</span>
+          </div>
+        </div>
+        <div class="product">
+          <img src="https://via.placeholder.com/300x200" alt="Product 6">
+          <div class="product-details">
+            <h3 class="product-name">Product 6</h3>
+            <span class="price">&#8377; 1600</span>
+          </div>
+        </div>
+        <!-- Repeat products for continuous loop -->
+      </div>
+    </div>
+
+    <!--this is stores head div-->
+    <div class="thin-div">
+        STORES NEAR ME
+    </div>
+    <br>
+    <!--this is stores near me-->
+    <div class="circle-container">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+  
+<!-- This is order bar-->
+<a href="order.html"><div class="fixed-rectangle" style="padding-top: 10px;"><b>
+ORDER</b>
+</div></a>
+
+
+<footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Email: shailendarshai25@gmail.com</li>
+          <li>Phone: +91 8660596538</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="BLUELOG.Html">Home</a></li>
+          <li><a href="electronics.html">Products</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+<script src="/src/index.js"></script>
+</body>
+</html>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
